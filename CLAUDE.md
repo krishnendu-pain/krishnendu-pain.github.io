@@ -1,48 +1,57 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Krishnendu Pain's academic homepage, built from the [al-folio](https://github.com/alshedivat/al-folio) v1 template.
 
-@AGENTS.md
+- Live site: <https://krishnendu-pain.github.io>
+- Repo: `krishnendu-pain/krishnendu-pain.github.io` (public user site, created 2026-10-23 with "Use this template")
+- Goal: a **minimal** site with only about, publications and CV in the navbar. More sections may be turned on later.
 
-`AGENTS.md` (imported above) is the **authoritative** agent entry point: change routing, the stop sign for gem-owned paths, the three silent failure modes, and the validated command set. Keep it short and ecosystem-neutral. Cross-repo architecture — the wrapper/tag/gem delegation table, feature gating, the v1 config contract, local overrides — lives in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md); area-to-gem ownership lives in [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md).
+For al-folio internals (gem-owned layouts, which paths must not be created, plugin wiring), see `AGENTS.md` and `docs/`. **Ignore the `/al-folio` baseurl advice in those files.** It applies to the upstream template repo. This site is a user site, so `baseurl` is empty.
 
-**Read those three before editing anything.** Everything below is Claude-specific or longer-form operational detail that does not belong in the short entry point. Do not restate facts from those files here — link to them.
+## Deployment
 
-## Daily dev loop
+- Pushing to `main` runs the **Deploy site** Action (`.github/workflows/deploy.yml`). It runs `jekyll build` and publishes `_site` to the **`gh-pages`** branch, which GitHub Pages serves.
+- Repo settings already in place: Pages source is `gh-pages` / root, and Actions have read/write workflow permissions.
+- `deploy.yml` only triggers on certain paths and skips `README.md`. To deploy anyway, run `gh workflow run deploy.yml -R krishnendu-pain/krishnendu-pain.github.io --ref main`.
+- A bot ("Auto update markdown TOC") sometimes commits to `main`. Run `git pull --rebase` before pushing.
+- After a deploy, Pages may need a nudge: `gh api -X POST repos/krishnendu-pain/krishnendu-pain.github.io/pages/builds`.
+- The local `gh` token has no `workflow` scope, so edits to `.github/workflows/*` can't be pushed from here. Make them in the GitHub web UI or refresh the scope (`gh auth refresh -s workflow`).
+- One build stalled on a slow Ubuntu apt mirror while installing ImageMagick. If a deploy hangs in "Install and Build", cancel it and re-run it.
+- A normal build takes about 2–5 minutes. Prettier CI (`prettier.yml`) checks formatting with `printWidth: 150`. To fix a file, run `npx -p prettier@3 prettier --no-config --print-width 150 --trailing-comma es5 --write <file>`.
 
-```bash
-bundle install                                # ruby gems
-bundle exec jekyll serve                      # dev server → http://localhost:4000/al-folio/  (NOTE baseurl)
-bundle exec jekyll build --baseurl /al-folio  # production-style build to _site/
-bash test/integration_distill.sh              # run ONE integration test (any of the seven in test/)
-npm run test:visual:update                    # refresh playwright snapshots after intentional UI change
-bundle exec al-folio upgrade apply --safe     # deterministic codemods (font-weight-* → font-*, remote→local URLs)
-bundle exec al-folio upgrade overrides diff <path>    # then `overrides accept <path>` to acknowledge an override
-```
+## Local environment (Windows)
 
-## Optional toolchains
+- `git`, `gh` and `npx` are on the PowerShell PATH but **not** on the Git-Bash PATH. Use PowerShell or the full paths (`/c/Program Files/Git/cmd/git.exe`, `/c/Program Files/GitHub CLI/gh.exe`).
+- Ruby and Docker are not installed, so there's no local Jekyll preview. Verify on the live site instead.
+- Commit identity (repo-local): `Krishnendu Pain <76436487+krishnendu-pain@users.noreply.github.com>`.
 
-- **Jupyter posts.** `bin/setup-python-deps` installs _only_ `jupyter` and `nbconvert` (via `pip --user --break-system-packages`) for `jekyll-jupyter-notebook`. It does **not** read `requirements.txt`. Missing `jupyter-nbconvert` is warn-and-continue; notebook rendering is skipped.
-- **Everything else Python.** [`requirements.txt`](requirements.txt) is the fuller list and must be installed separately (`python3 -m pip install -r requirements.txt`): `rendercv[full]` for CV rendering, `scholarly` for `bin/update_scholar_citations.py`, plus `nbconvert` and `pyyaml`.
-- **Responsive images.** `imagemagick.enabled: true` needs ImageMagick `convert` on `PATH`.
-- **Manual deploy.** `bin/deploy` is the manual `gh-pages` build + purgecss + force-push path; CI normally deploys. `purgecss` is not a devDependency — install it with `npm install -g purgecss`.
+## What has been customized
 
-## Docker serving model (v1-specific)
+| File                                                                | State                                                                                                                                                                                                                                          |
+| ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `_config.yml`                                                       | Name Krishnendu Pain, `url: https://krishnendu-pain.github.io`, empty `baseurl`, favicon 📚, `last_updated: true`, Disqus off, `external_sources: []`, scholar `last_name: [Pain]` / `first_name: [Krishnendu, K.]`                            |
+| `_pages/about.md`                                                   | Home page. Subtitle, bio and Research Interests are **placeholders** (`TODO`, `<...>`). `profile.image` is empty until a real photo exists (the template's `assets/img/prof_pic.jpg` is Einstein, so don't use it). News on; latest posts off. |
+| `_pages/cv.md`                                                      | `cv_pdf: /assets/pdf/cv.pdf`, `cv_format: rendercv`                                                                                                                                                                                            |
+| `assets/pdf/cv.pdf`                                                 | The user's real CV PDF (added 2026-10-23)                                                                                                                                                                                                      |
+| `_data/cv.yml`                                                      | Web CV in rendercv format. Still **placeholders** (education, experience, awards, skills).                                                                                                                                                     |
+| `_data/socials.yml`                                                 | `cv_pdf`, `github_username: krishnendu-pain`. Email, Scholar, ORCID and LinkedIn are commented-out TODOs.                                                                                                                                      |
+| `_bibliography/papers.bib`                                          | No papers yet. It contains only an `@comment{}` block with an example entry. Don't put example entries behind `%`, because bibtex-ruby still parses `@...` after a `%`.                                                                        |
+| `_news/website_launch.md`                                           | The only news item                                                                                                                                                                                                                             |
+| `_data/{coauthors,venues,repositories,citations}.yml`               | Reset to empty templates                                                                                                                                                                                                                       |
+| `_pages/{blog,projects,teaching,repositories,dropdown,profiles}.md` | `nav: false` (hidden but kept)                                                                                                                                                                                                                 |
+| `README.md`                                                         | Short guide to editing the site                                                                                                                                                                                                                |
 
-`docker compose up -d` bind-mounts the repo to `/srv/jekyll` and runs `bin/entry_point.sh`, which serves with `--force_polling --destination /tmp/_site`. The build output deliberately goes to **container-local `/tmp/_site`, not the bind-mounted `_site`** — writing `_site` back across the host bind mount caused write deadlocks. The container also `inotifywait`s `_config.yml` and restarts Jekyll on change (config edits aren't hot-reloaded by `--watch`). Verify with the `/al-folio` baseurl: `curl -fsS http://127.0.0.1:8080/al-folio/`. `docker-compose-slim.yml` pulls a prebuilt `:slim` image instead of building locally.
+Removed demo content: `_posts/`, `_projects/`, `_teachings/`, `_books/`, the demo `_news/`, `assets/pdf/example_pdf.pdf`, `assets/img/publication_preview/`, `assets/img/book_covers/`. Re-create these folders when the user wants those sections.
 
-## CI gates and the style contract
+## Disabled on GitHub
 
-`npm run lint:style-contract` (`test/style_contract.js`) is the automated enforcement of the thin-starter boundary and will fail CI if you cross it. Beyond the forbidden paths listed in `AGENTS.md`, it also asserts that `_config.yml` keeps `theme: al_folio_core` and the required plugins, that the `third_party_libraries` SRI pins are present, and that the `al_math` Gemfile pin stays on a released version rather than a git branch.
+- `render-cv.yml` (auto-renders a PDF from `_data/cv.yml` and commits it) is **disabled**, because the placeholder dates would fail rendercv and its output could overwrite the hand-made `cv.pdf`. Re-enable it only if the user wants a PDF generated from `cv.yml`: `gh workflow enable render-cv.yml -R krishnendu-pain/krishnendu-pain.github.io`.
 
-Other gates:
+## Still to do (waiting on the user)
 
-- `unit-tests.yml` — style contract plus all seven `test/integration_*.sh` scripts (`comments`, `plugin_toggles`, `distill`, `bootstrap_compat`, `upgrade_cli`, `css_minify`, `new_plugins`).
-- `visual-regression.yml` — Playwright on chromium + webkit, diffing the candidate build against a `v0.16.3` baseline worktree served on `:4100` via `BASELINE_URL`.
-- `upgrade-check.yml` — `bundle exec al-folio upgrade audit`.
-- `prettier.yml` — Prettier with `@shopify/prettier-plugin-liquid` and `printWidth: 150`. Run `npm run lint:prettier` before pushing; `npx prettier . --write` fixes.
-- `update-tocs.yml` — regenerates `<!--ts-->…<!--te-->` blocks in changed root and `docs/` Markdown files. If you add or rename a heading, expect a follow-up auto-commit on `main`.
-
-## Gem version pins
-
-`Gemfile` pins every `al-*` gem to an exact released version in `group :al_folio_plugins`, and `_config.yml` lists the same gems under `plugins:`. Read the current pins from the `Gemfile` rather than trusting any version quoted in prose — including here. To test a gem fix against this site, repoint the `Gemfile` at a sibling checkout (`path:`, `git:`, or `branch:`) and `bundle install`; see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md#working-on-a-gem-alongside-the-starter). Revert the pin before committing.
+- Bio, affiliation, advisor and research interests in `_pages/about.md`
+- Profile photo, saved as `assets/img/prof_pic.jpg`, then set `profile.image: prof_pic.jpg`
+- Papers in `papers.bib` (add `selected = {true}` to show a paper on the home page; PDFs go in `assets/pdf/`)
+- Real data in `_data/cv.yml`
+- Email, Google Scholar, ORCID and LinkedIn in `_data/socials.yml`
+- Optional later: custom domain (add a `CNAME` file and update `url`), turning on the blog or projects
