@@ -5,23 +5,20 @@
 # To turn a name into a link: remove the leading "# " from its three lines and paste the URL.
 # Leave an entry commented out until you have its URL (an empty url would create a broken link).
 
-# "chiong":
-#   - firstname: ["Khai", "K."]
-#     url: https://...
+"chiong":
+  - firstname: ["Khai", "K."]
+    url: https://www.khaichiong.com/
 
-# "xie":
-#   - firstname: ["Ying", "Y."]
-#     url: https://...
+"xie":
+  - firstname: ["Ying", "Y."]
+    url: https://jindal.utdallas.edu/faculty/ying-xie/
 
-# "rafieian":
-#   - firstname: ["Omid", "O."]
-#     url: https://...
+"rafieian":
+  - firstname: ["Omid", "O."]
+    url: https://omidraf.github.io/
 
-# "kapoor":
-#   - firstname: ["Anuj", "A."]
-#     url: https://...
+"kapoor":
+  - firstname: ["Anuj", "A."]
+    url: https://business.missouri.edu/directory/kapoor
 
-# "sharma":
-#   - firstname: ["Amitt", "A."]
-#     url: https://...
 

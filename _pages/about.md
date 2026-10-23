@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: PhD Student, Quantitative Marketing, <a href=https://jindal.utdallas.edu/>Naveen Jindal School of Management</a>, <a href=https://utdallas.edu/>The University of Texas at Dallas</a>
+subtitle: PhD Candidate, Quantitative Marketing, <a href=https://jindal.utdallas.edu/>Naveen Jindal School of Management</a>, <a href=https://utdallas.edu/>The University of Texas at Dallas</a>
 
 profile:
   align: left
@@ -46,7 +46,7 @@ latest_posts:
 
 <!-- I am a PhD student at **The University of Texas at Dallas**, advised by [&lt;Advisor Name&gt;](#). My research focuses on &lt;one-sentence summary of your research&gt;. -->
 
-I am a PhD student at **The University of Texas at Dallas**. My research studies how AI intermediaries reshape markets by influencing what consumers see, how they make decisions, and how platforms communicate with them. I combine empirical and theoretical methods to understand the economic and strategic consequences of AI-mediated interactions.
+I am a PhD candidate at **The University of Texas at Dallas**. My research studies how AI intermediaries reshape markets by influencing what consumers see, how they make decisions, and how platforms communicate with them. I combine empirical and theoretical methods to understand the economic and strategic consequences of AI-mediated interactions.
 
 You can find my [CV]({{ '/assets/pdf/cv.pdf' | relative_url }}) here.
 
