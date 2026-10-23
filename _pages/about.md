@@ -6,7 +6,7 @@ subtitle: <!-- TODO --> PhD Student, Quantitative Marketing, <a href=https://jin
 
 profile:
   align: left
-  image: prof_pic.jpg
+  image: prof_pic.png
   image_circular: true # crops the image to make it circular
   # more_info: >
   #   <p>&lt;Office / Room&gt;</p>
@@ -26,6 +26,21 @@ latest_posts:
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
+
+<!-- Profile photo: force a square box so image_circular gives a true circle (not an oval), and leave more room between the photo and the bio. -->
+<style>
+  .profile img.rounded-circle {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
+  }
+  .profile.float-left {
+    margin-right: 2.5rem;
+  }
+  .profile.float-right {
+    margin-left: 2.5rem;
+  }
+</style>
 
 <!-- TODO: replace this paragraph with your own 2–3 line bio -->
 
