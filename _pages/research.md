@@ -1,16 +1,17 @@
 ---
 layout: page
 permalink: /research/
-title: research
+title: Research
 description:
 nav: true
 nav_order: 2
 
 # Turn each section on (true) or off (false). Each section reads its own BibTeX file in _bibliography/.
 sections:
+  publications: false # _bibliography/papers.bib
+  working_papers: false # _bibliography/working_papers.bib
   works_in_progress: true # _bibliography/works_in_progress.bib
-  working_papers: true # _bibliography/working_papers.bib
-  publications: true # _bibliography/papers.bib
+  pre_phd: true # _bibliography/pre_phd.bib
 ---
 
 <!-- _pages/research.md -->
@@ -28,11 +29,11 @@ sections:
 
 {% include bib_search.liquid %}
 
-{% if page.sections.works_in_progress %}
+{% if page.sections.publications %}
 
-<h2 id="works-in-progress">Works in Progress</h2>
+<h2 id="publications">Publications</h2>
 <div class="publications">
-{% bibliography --file works_in_progress.bib %}
+{% bibliography --file papers.bib %}
 </div>
 {% endif %}
 
@@ -44,10 +45,18 @@ sections:
 </div>
 {% endif %}
 
-{% if page.sections.publications %}
+{% if page.sections.works_in_progress %}
 
-<h2 id="publications">Publications</h2>
+<h2 id="works-in-progress">Works in Progress</h2>
 <div class="publications">
-{% bibliography --file papers.bib %}
+{% bibliography --file works_in_progress.bib %}
+</div>
+{% endif %}
+
+{% if page.sections.pre_phd %}
+
+<h2 id="pre-phd">Pre-PhD RA Work</h2>
+<div class="publications">
+{% bibliography --file pre_phd.bib %}
 </div>
 {% endif %}

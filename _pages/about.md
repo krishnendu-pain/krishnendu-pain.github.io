@@ -1,8 +1,8 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
-subtitle: <!-- TODO --> PhD Student, Quantitative Marketing, <a href=https://jindal.utdallas.edu/>Naveen Jindal School of Management</a>, <a href=https://utdallas.edu/>The University of Texas at Dallas</a>
+subtitle: PhD Student, Quantitative Marketing, <a href=https://jindal.utdallas.edu/>Naveen Jindal School of Management</a>, <a href=https://utdallas.edu/>The University of Texas at Dallas</a>
 
 profile:
   align: left
