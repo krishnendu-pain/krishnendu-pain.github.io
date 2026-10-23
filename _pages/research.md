@@ -12,6 +12,9 @@ sections:
   working_papers: false # _bibliography/working_papers.bib
   works_in_progress: true # _bibliography/works_in_progress.bib
   pre_phd: true # _bibliography/pre_phd.bib
+
+# Show the "Type to filter" search box above the sections (true) or hide it (false).
+search_box: false
 ---
 
 <!-- _pages/research.md -->
@@ -25,9 +28,15 @@ sections:
     flex: 0 0 100%;
     max-width: 100%;
   }
+  /* Space between research sections */
+  .publications + h2 {
+    margin-top: 3rem;
+  }
 </style>
 
+{% if page.search_box %}
 {% include bib_search.liquid %}
+{% endif %}
 
 {% if page.sections.publications %}
 
