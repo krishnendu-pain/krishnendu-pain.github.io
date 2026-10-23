@@ -36,6 +36,14 @@ search_box: false
   .publications ol.bibliography li .author a:hover {
     text-decoration: underline;
   }
+  /* Relabel the theme's "DOI" button (from the bib `doi` field) as "Journal" */
+  .publications ol.bibliography li .links a.btn[href^="https://doi.org/"] {
+    font-size: 0;
+  }
+  .publications ol.bibliography li .links a.btn[href^="https://doi.org/"]::after {
+    content: "Journal";
+    font-size: 0.64rem;
+  }
   /* Space between research sections */
   .publications + h2 {
     margin-top: 3rem;
