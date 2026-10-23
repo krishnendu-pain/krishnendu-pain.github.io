@@ -370,8 +370,10 @@ scholar:
   details_link: Details
 
   query: "@*"
-  group_by: year
+  group_by: none # was "year" (big grey year labels); removed at the user's request
   group_order: descending
+  sort_by: year,month # newest first, since entries are no longer grouped by year
+  order: descending
 
 # Display different badges withs stats for your publications
 # Customize badge behavior in _layouts/bib.liquid

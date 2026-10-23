@@ -6,19 +6,21 @@ Every push to `main` triggers the **Deploy site** GitHub Action, which builds th
 
 ## Where things live
 
-| What                                         | File                                                                        |
-| -------------------------------------------- | --------------------------------------------------------------------------- |
-| Bio, affiliation, interests                  | `_pages/about.md`                                                           |
-| Profile photo                                | `assets/img/prof_pic.jpg`, then set `profile.image` in `about.md`           |
-| Research page sections and search box on/off | `sections:` and `search_box:` in the front matter of `_pages/research.md`   |
-| Works in progress                            | `_bibliography/works_in_progress.bib`                                       |
-| Working papers                               | `_bibliography/working_papers.bib`                                          |
-| Publications                                 | `_bibliography/papers.bib`                                                  |
-| Paper PDFs                                   | `assets/pdf/`                                                               |
-| CV (PDF)                                     | replace `assets/pdf/cv.pdf` (the CV page and the bio link both point to it) |
-| Email / Scholar / ORCID etc.                 | `_data/socials.yml`                                                         |
-| News items                                   | one file per item in `_news/`                                               |
-| Name, site URL, features                     | `_config.yml`                                                               |
+| What                                         | File                                                                                  |
+| -------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Bio, affiliation, interests                  | `_pages/about.md`                                                                     |
+| Profile photo                                | `assets/img/prof_pic.jpg`, then set `profile.image` in `about.md`                     |
+| Research page sections and search box on/off | `sections:` and `search_box:` in the front matter of `_pages/research.md`             |
+| Works in progress                            | `_bibliography/works_in_progress.bib`                                                 |
+| Working papers                               | `_bibliography/working_papers.bib`                                                    |
+| Publications                                 | `_bibliography/papers.bib`                                                            |
+| Paper PDFs                                   | `assets/pdf/`                                                                         |
+| CV (PDF)                                     | replace `assets/pdf/cv.pdf` (the CV page and the bio link both point to it)           |
+| Email / Scholar / ORCID etc.                 | `_data/socials.yml`                                                                   |
+| Coauthor profile links                       | `_data/coauthors.yml` (uncomment an entry and paste the URL)                          |
+| Accent color (links, highlights)             | `$purple-color` (light mode) and `$cyan-color` (dark mode) in `_sass/_variables.scss` |
+| News items                                   | one file per item in `_news/`                                                         |
+| Name, site URL, features                     | `_config.yml`                                                                         |
 
 ## Turning more sections on later
 

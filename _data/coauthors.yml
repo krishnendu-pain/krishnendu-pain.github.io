@@ -1,6 +1,27 @@
-# Coauthor links shown on the publications page.
-# Format:
-# "lastname":
-#   - firstname: ["Firstname", "F."]
-#     url: https://coauthor-homepage.example
-{}
+# Coauthor profile links on the research page.
+# Key = author's last name in lowercase (accents removed); firstname = how the first name
+# appears in the .bib file (list several variants if needed, e.g. ["Ying", "Y."]).
+#
+# To turn a name into a link: remove the leading "# " from its three lines and paste the URL.
+# Leave an entry commented out until you have its URL (an empty url would create a broken link).
+
+# "chiong":
+#   - firstname: ["Khai", "K."]
+#     url: https://...
+
+# "xie":
+#   - firstname: ["Ying", "Y."]
+#     url: https://...
+
+# "rafieian":
+#   - firstname: ["Omid", "O."]
+#     url: https://...
+
+# "kapoor":
+#   - firstname: ["Anuj", "A."]
+#     url: https://...
+
+# "sharma":
+#   - firstname: ["Amitt", "A."]
+#     url: https://...
+
