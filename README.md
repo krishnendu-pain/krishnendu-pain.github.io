@@ -6,17 +6,16 @@ Every push to `main` triggers the **Deploy site** GitHub Action, which builds th
 
 ## Where things live
 
-| What                         | File                                                                             |
-| ---------------------------- | -------------------------------------------------------------------------------- |
-| Bio, affiliation, interests  | `_pages/about.md`                                                                |
-| Profile photo                | `assets/img/prof_pic.jpg`, then set `profile.image` in `about.md`                |
-| Papers                       | `_bibliography/papers.bib` (`selected = {true}` → shown on home page)            |
-| Paper PDFs                   | `assets/pdf/`                                                                    |
-| CV (web version)             | `_data/cv.yml`                                                                   |
-| CV (PDF)                     | `assets/pdf/cv.pdf`, then set `cv_pdf` in `_pages/cv.md` and `_data/socials.yml` |
-| Email / Scholar / ORCID etc. | `_data/socials.yml`                                                              |
-| News items                   | one file per item in `_news/`                                                    |
-| Name, site URL, features     | `_config.yml`                                                                    |
+| What                         | File                                                                        |
+| ---------------------------- | --------------------------------------------------------------------------- |
+| Bio, affiliation, interests  | `_pages/about.md`                                                           |
+| Profile photo                | `assets/img/prof_pic.jpg`, then set `profile.image` in `about.md`           |
+| Papers                       | `_bibliography/papers.bib` (`selected = {true}` → shown on home page)       |
+| Paper PDFs                   | `assets/pdf/`                                                               |
+| CV (PDF)                     | replace `assets/pdf/cv.pdf` (the CV page and the bio link both point to it) |
+| Email / Scholar / ORCID etc. | `_data/socials.yml`                                                         |
+| News items                   | one file per item in `_news/`                                               |
+| Name, site URL, features     | `_config.yml`                                                               |
 
 ## Turning more sections on later
 

@@ -31,6 +31,8 @@ latest_posts:
 
 I am a PhD student at **&lt;Your University&gt;**, advised by [&lt;Advisor Name&gt;](#). My research focuses on &lt;one-sentence summary of your research&gt;.
 
+You can find my [CV]({{ '/assets/pdf/cv.pdf' | relative_url }}) here.
+
 ### Research Interests
 
 <!-- TODO: edit this list -->
