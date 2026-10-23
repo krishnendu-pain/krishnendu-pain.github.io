@@ -12,6 +12,14 @@
     flex: 0 0 100%;
     max-width: 100%;
   }
+  /* Coauthor links: no dashed underline (theme default); underline only on hover */
+  .publications ol.bibliography li .author a,
+  .publications ol.bibliography li .author a:hover {
+    border-bottom: none;
+  }
+  .publications ol.bibliography li .author a:hover {
+    text-decoration: underline;
+  }
   /* Space between research sections */
   .publications + h2 {
     margin-top: 3rem;
