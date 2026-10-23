@@ -7,7 +7,7 @@ subtitle: <!-- TODO --> PhD Student, Quantitative Marketing, <a href=https://jin
 profile:
   align: right
   image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
+  image_circular: true # crops the image to make it circular
   # more_info: >
   #   <p>&lt;Office / Room&gt;</p>
   #   <p>&lt;University&gt;</p>

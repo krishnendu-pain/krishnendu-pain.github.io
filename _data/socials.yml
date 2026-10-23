@@ -1,8 +1,8 @@
 # this file contains the social media links and usernames of the author
 # the socials will be displayed in the order they are defined here
 # for more information, please refer to the documentation of jekyll-socials plugin: https://github.com/george-gca/jekyll-socials
-# email: # TODO: your email address
+email: krishnendu.pain@utdallas.edu # TODO: your email address
 github_username: krishnendu-pain # your GitHub user name
 # scholar_userid: # TODO: your Google Scholar ID (the "user=" part of your profile URL)
 # orcid_id: # TODO: your ORCID ID (e.g. 0000-0000-0000-0000)
-# linkedin_username: # TODO: your LinkedIn username
+linkedin_username: painkrishnendu # TODO: your LinkedIn username
