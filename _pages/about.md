@@ -5,7 +5,7 @@ permalink: /
 subtitle: <!-- TODO --> PhD Student, Quantitative Marketing, <a href=https://jindal.utdallas.edu/>Naveen Jindal School of Management</a>, <a href=https://utdallas.edu/>The University of Texas at Dallas</a>
 
 profile:
-  align: right
+  align: left
   image: prof_pic.jpg
   image_circular: true # crops the image to make it circular
   # more_info: >

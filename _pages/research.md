@@ -15,6 +15,17 @@ sections:
 
 <!-- _pages/research.md -->
 
+<!-- Entries without an abbr (venue badge) leave an empty left column that indents the text; hide it so entries align with the headings. -->
+<style>
+  .publications ol.bibliography li .row > .abbr:not(:has(*)) {
+    display: none;
+  }
+  .publications ol.bibliography li .row:not(:has(.abbr *)) > .col-sm-8 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+</style>
+
 {% include bib_search.liquid %}
 
 {% if page.sections.works_in_progress %}
